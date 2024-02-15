@@ -4,7 +4,7 @@ import ErrorMessage from "../ErrorMessage";
 import StarRating from "../StarRating";
 import { useKey } from "../customHooks/useKey";
 
-const KEY = "6d075e70";
+const KEY = process.env.REACT_APP_API_KEY;
 
 export default function MovieDetails({
   selectedId,
@@ -69,7 +69,7 @@ export default function MovieDetails({
           setIsLoading(true);
           setError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
+            `https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`
           );
           if (!res.ok)
             throw new Error("Something went wrong with fetching movies");
